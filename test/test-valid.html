@@ -14,6 +14,7 @@
 			height:50px;
 			margin-bottom: 20px;
 			background-color: #eee;
+			display:none;
 		}
 	</style>
 <script type="text/javascript" src="../js/lib/jquery.js"></script>
@@ -24,9 +25,41 @@
 		$('#h5').fullpage({
 
 			'sectionsColor':['#254875','#00ff00','#254587','#695684'],
+			onLeave:function(index,nextIndex,direction){
+				//debugger
+				$('#h5').find('.page').eq(index-1).trigger('onLeave')
+				//$('#h5').find('.page').eq(index-1).triggerHandler('onLeave')//triggerHandler不会传播
+			},
+			afterLoad:function(anchorlink,index){	//第一个参数是锚点名称，第二个是index
+				//debugger
+				$('#h5').find('.page').eq(index-1).trigger('onLoad')
+			},
+
 			
 
 		});
+
+		//为dom元素做事件
+			$('.page').on('onLeave',function(){
+				console.log($(this).attr('id'),'=====>>','onLeave');
+				$(this).find('.component').trigger('onLeave');//页面载入时执行component事件
+
+			})
+			$('.page').on('onLoad',function(){
+				console.log($(this).attr('id'),'=====>>','onLoad');
+				$(this).find('.component').trigger('onLoad');
+			})
+			//component入场动画 
+			$('.component').on('onLoad',function(){
+				$(this).fadeIn();
+				return false;//执行完不向上传播
+			})
+			//component 出场动画
+			$('.component').on('onLeave',function(){//component 出场动画
+				$(this).fadeOut();
+				return false;
+			})
+
 	});
 	<!--页面载入完成 之后 才开始执行-->
 
