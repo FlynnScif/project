@@ -8,7 +8,7 @@
 		body{
 			margin: 0;
 			padding:0;
-			background-color: :#000
+			background-color: #000;
 			font-size:12px;
 
 		}
@@ -21,15 +21,7 @@
 			top:50%;
 			margin:-270px 0 0 -170px;
 		}
-		.h5_componet_base{
-			transition:all ls;
-		}
-		.h5_component_base_leave{
-			opacity:1;
-		}
-		.h5_component_base_leave{
-			opacity:0;
-		}
+
 	</style>
 	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
 
@@ -50,15 +42,28 @@
 			height : 306,
 			css : {
 				left:50,
-				top:50
+				top:50,
+				opacity:0,
 			},
-			animateIn:{ top:50 }//进入样式
-			animateOut:{ top:150 }//离开样式
+			animateIn :{
+				bottom:80,
+				opacity:1
+			}, //进入样式
+			animateOut :{
+				bottom:0,
+				opacity:0
+			}, //离开样式
 			center:true,
 
 		}//配置文件
 		var h5 = new H5ComponentBase( 'myName',cfg );//将cfg传进去
 		$('.iphone').append(h5);
+
+		var leave = true;
+		$('body').click(function(){
+			leave = !leave;
+			$('.h5_component').trigger(leave? 'onLaeve':'onLoad')
+		})
 
 	</script>
 </body>
