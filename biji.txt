@@ -1,0 +1,27 @@
+
+			background-image: url(./p1_people.png);
+
+页面切换事件-页面-component
+内容组织类：h5
+作用：
+1.组织H5报告的内容结构
+2.设置H5报告的切换效果（fullpage.js）
+2.1当页切换时，通知页内所有的组件
+方法：
+添加一个页：addpage
+添加一个组件:addcomponent
+展示所有组件:loader
+
+
+图文组件类：h5componentbase
+作用：输出一个DOM，内容可以是图片或文字
+事件：当前页载入、移出
+
+图表组件类：h5component???
+作用：在h5componentbase的基础上插入dom结构或canvas图形
+事件：当前页载入移出、图表组件本身的生长动画
+柱图bar-垂直柱图bar_v
+散点图point
+拆线图polyline
+雷达图radar
+饼图pie-环图ring

@@ -10,7 +10,6 @@
 			padding:0;
 			background-color: :#000
 			font-size:12px;
-
 		}
 		.iphone{
 			width:340px;
@@ -20,16 +19,10 @@
 			left:50%;
 			top:50%;
 			margin:-270px 0 0 -170px;
+			background-image: url(p1_people.png);
 		}
-		.h5_componet_base{
-			transition:all ls;
-		}
-		.h5_component_base_leave{
-			opacity:1;
-		}
-		.h5_component_base_leave{
-			opacity:0;
-		}
+
+		
 	</style>
 	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
 
@@ -41,25 +34,7 @@
 	<div class='iphone'>
 
 	</div>
-	<script type="text/javascript">
-		var cfg = {
-			type : 'base',
-			//text : 'text',
-			bg : './p1_people.png',
-			width : 514,
-			height : 306,
-			css : {
-				left:50,
-				top:50
-			},
-			animateIn:{ top:50 }//进入样式
-			animateOut:{ top:150 }//离开样式
-			center:true,
 
-		}//配置文件
-		var h5 = new H5ComponentBase( 'myName',cfg );//将cfg传进去
-		$('.iphone').append(h5);
 
-	</script>
 </body>
 </html>
