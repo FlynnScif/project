@@ -1,7 +1,13 @@
-/*基本css对像*/
-.h5_component{
+/*H%对像的全局样式*/
+.h5{
+	height:100%;
+}
+
+.h5_page{
+	position: relative;/*让子元素能相对页面进行定位*/
+	width: 100%;
+	height: 100%;
+	background-color: #ddd;
 	background-size: 100%;
 	background-repeat: no-repeat;
-	position: absolute;
-	
 }

@@ -25,20 +25,32 @@ var H5ComponentBase = function ( name, cfg ) { //不懂为什么要删掉funcgio
 	}
 
 //...很多自定义的参数
+	//onclick
+	if(typeof cfg.onclick ==='function'){
+		component.on('click',cfg.onclick)
+	}
+
 	//component入场动画 
 			component.on('onLoad',function(){ 
-			//$('.component')换成component因为不能是所有，是当前的组件对像
-				component.addClass(cls+'_load').removeClass(cls+'_leave');
-				cfg.animateIn && component.animate(cfg.animateIn);//一开始错写成animatein了
+
+				setTimeout(function(){
+					component.addClass(cls+'_load').removeClass(cls+'_leave');
+					cfg.animateIn && component.animate(cfg.animateIn);//一开始错写成animatein了
+				},cfg.delay ||0)
 
 				return false;//执行完不向上传播
 			})
 			//component 出场动画
-			component.on('onLeave',function(){//component 出场动画
-				component.addClass(cls+'_leave').removeClass(cls+'_leave');
-				cfg.animateOut && component.animate(cfg.animateOut);
+			component.on('onLeave',function(){
+				setTimeout(function(){
+					component.addClass(cls+'_leave').removeClass(cls+'_leave');
+					cfg.animateOut && component.animate(cfg.animateOut);
+				},cfg.delay || 0)
+
 				return false;
+
 			})
+
 
 
 	return component;

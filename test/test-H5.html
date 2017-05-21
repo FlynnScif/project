@@ -8,7 +8,6 @@
 		body{
 			margin: 0;
 			padding:0;
-			background-color: #000;
 			font-size:12px;
 
 		}
@@ -31,17 +30,53 @@
 <!--H5对象资源&管理内容：页-组件-->
 	<script type="text/javascript" src="../js/H5.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/H5.css">
+
+	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
+<!--测试用样式-->
+	<style type="text/css">
+		body{
+			margin:0;
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
 	<!--用于开发测试H5内容组织功能，以及fullpage页面切换&组件切换-->
 	<script type="text/javascript">
 		$(function (){
-			var h5 =new H5();
-				h5.addPage('face');//h5添加页
-				h5.addComponent('face');//h5添加组件
-				h5.addPage('desc');
-				h5.addPage('page-3');
-				h5.addPage('face');
+			var h5 = new H5();
+
+				h5
+				.addPage('face','首页')//链式调用
+						.addComponent('logo',{
+							text:'logo',
+							width:400,
+							height:100,
+							css:{backgroundColor:'red',top:200,opacity:0},//为什么不能用background-color?
+							center:true,
+							animateIn:{opacity:1 },
+							animateOut:{opacity:0}
+						})
+						.addComponent('slogan',{
+							text:'slogan',
+							width:400,
+							height:100,
+							css:{backgroundColor:'red',top:350},
+							center:true,
+						})
+					.addPage('desc','2')
+						.addComponent('caption',{
+							text:'核心理念',
+							width:400,
+							height:100,
+							css:{backgroundColor:'green',top:200},
+							center:true,
+						})
+					.addPage('page-3','3')
+						.addComponent('caption',{text:'客户方向分布'})
+					.loader();
+
 		})
 
 	</script>
