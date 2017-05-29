@@ -78,9 +78,13 @@ var H5ComponentPolyline = function ( name,cfg ) {
 		var item = cfg.data[i];
 		x = row_w*i +row_w;
 		y = h*(1-item[1]);
-
 		ctx.lineTo(x,y);
 	}
+	//绘制阴影
+	ctx.lineTo(x,h);
+	ctx.lineTo(row_w,h);
+	ctx.fillStyle = ('rgba(255,136,120,0.2)');//有透明度的颜色
+	ctx.fill();
 	//写数据
 	for ( i in cfg.data){
 		var item = cfg.data[i];
@@ -91,6 +95,7 @@ var H5ComponentPolyline = function ( name,cfg ) {
 		
 		ctx.fillText(((item[1]*100)>>0)+'%',x-10,y-10);
 	}
+
 
 
 
