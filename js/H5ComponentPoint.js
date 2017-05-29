@@ -16,13 +16,14 @@ var H5ComponentPoint = function ( name,cfg ) {
 		//point.text(item[0]);//输出第0项
 	//	point.text(item[0]+'-'+item[1]);
 		var name = $('<div class="name">'+item[0]+'</div>');
-		var rate = $('<div class="per">'+(item[1]*100)+'%</div>');
+		var rate = $('<div class="per">'+(Math.round(item[1]*100))+'%</div>');
 		//point.append(name).append(rate);
 		name.append(rate);
 		point.append(name);
 
 
 		var per = (item[1]/base)*100 +'%';
+		//var per = (item[1])*100+'%';
 
 
 		point.width(per).height(per);

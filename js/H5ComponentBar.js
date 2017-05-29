@@ -25,7 +25,7 @@ var H5ComponentBar = function ( name,cfg ) {
 
 		name.text(item[0]);
 
-		per.text(width);
+		per.text(Math.round(item[1]*100));
 		
 		line.append(name).append(rate).append(per);//将name附加到line里
 
