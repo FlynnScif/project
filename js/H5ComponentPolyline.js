@@ -53,19 +53,47 @@ var H5ComponentPolyline = function ( name,cfg ) {
 
 	var x =0;
 	var y =0;
-	ctx.moveTo(10,10);
-	ctx.arc(10,10,5,0,2*Math.PI);//第三个是半径，第4、5个是起始结束角度
-	///step = cfg.data.length+1;
+	var row_w = (w / (cfg.data.length+1));
+	//ctx.moveTo(10,10);
+	//ctx.arc(10,10,5,0,2*Math.PI);//第三个是半径，第4、5个是起始结束角度
+	//step = cfg.data.length+1;
+	/**/
 	//for(i in cfg.data){ 
 	//	var item=cfg.data[i];
 	//	console.log(item);
 	//}
-
+	//画点
 	for ( i in cfg.data){
 		var item = cfg.data[i];
-		//x = (w/cfg.data.length)*i
-		//ctx.moveTo(x,y);
+		x = row_w*i +row_w;
+		y = h*(1-item[1]);
+
+		ctx.moveTo(x,y);
+		ctx.arc(x,y,5,0,2*Math.PI);
 	}
+	//连线
+		//移动画笔到第一个数据的点位置
+	ctx.moveTo(row_w,h*(1-cfg.data[0][1]));
+	for (i in cfg.data){
+		var item = cfg.data[i];
+		x = row_w*i +row_w;
+		y = h*(1-item[1]);
+
+		ctx.lineTo(x,y);
+	}
+	//写数据
+	for ( i in cfg.data){
+		var item = cfg.data[i];
+		x = row_w*i +row_w;
+		y = h*(1-item[1]);
+
+		ctx.moveTo(x,y);
+		ctx.fillText(item[2],x-10,y-10);
+		
+	}
+
+
+
 	ctx.stroke();
 
 
