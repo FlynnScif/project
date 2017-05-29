@@ -86,10 +86,10 @@ var H5ComponentPolyline = function ( name,cfg ) {
 		var item = cfg.data[i];
 		x = row_w*i +row_w;
 		y = h*(1-item[1]);
-
-		ctx.moveTo(x,y);
-		ctx.fillText(item[2],x-10,y-10);
 		
+		ctx.fillStyle = item[2] ? item[2]:'#595959';
+		
+		ctx.fillText(((item[1]*100)>>0)+'%',x-10,y-10);
 	}
 
 
