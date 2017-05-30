@@ -12,6 +12,7 @@ var H5ComponentPi = function ( name,cfg ) {
 	var ctx = cns.getContext('2d');
 	cns.width = ctx.width = w;
 	cns.height = ctx.height = h;
+	$(cns).css('zIndex',1);
 	component.append(cns);
 
 	var r =w/2;
@@ -29,6 +30,7 @@ var H5ComponentPi = function ( name,cfg ) {
 	var ctx = cns.getContext('2d');
 	cns.width = ctx.width = w;
 	cns.height = ctx.height = h;
+	$(cns).css('zIndex',2);
 	component.append(cns);
 
 	var colors = ['red','green','blue','yellow','gray'];//备用颜色
@@ -59,17 +61,39 @@ var H5ComponentPi = function ( name,cfg ) {
 
 	}
 
+//加入一个蒙板层
+	var cns = document.createElement('canvas');//
+	var ctx = cns.getContext('2d');
+	cns.width = ctx.width = w;
+	cns.height = ctx.height = h;
+	$(cns).css('zIndex',3);
+	component.append(cns);
+
+	var r =w/2;
+
+	ctx.beginPath();
+	ctx.fillStyle='#eee';
+	ctx.strokeStyle='#eee';
+	ctx.lineWidth =1;
 
 
-
+//饼图生长动画
 	var draw = function ( per ){
-		
+		ctx.clearRect(0,0,w,h);
+
+		ctx.beginPath();
+		ctx.moveTo(r,r);
+
+		ctx.arc(r,r,r,sAngel,sAngel+2*Math.PI*per,true);//最后一个参数是为了逆行
+		ctx.fill();
+		ctx.stroke();
 	}
+	//draw(0);
 
 	
 	component.on('onLoad',function(){
 		//饼图生长动画
-		var s = 1;
+		var s = 0;
 		for (i = 0; i < 100 ;i++){
 			setTimeout(function(){
 				s+=.01;
