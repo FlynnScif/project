@@ -83,12 +83,18 @@ var H5ComponentPi = function ( name,cfg ) {
 
 		ctx.beginPath();
 		ctx.moveTo(r,r);
-
-		ctx.arc(r,r,r,sAngel,sAngel+2*Math.PI*per,true);//最后一个参数是为了逆行
+		if(per <= 0){
+			ctx.arc(r,r,r,0,2*Math.PI,true);
+			//最后一个参数是为了逆行
+		}else{
+			ctx.arc(r,r,r,sAngel,sAngel+2*Math.PI*per,true);
+			//最后一个参数是为了逆行
+		
+		}
 		ctx.fill();
 		ctx.stroke();
 	}
-	//draw(0);
+	draw(0);
 
 	
 	component.on('onLoad',function(){
