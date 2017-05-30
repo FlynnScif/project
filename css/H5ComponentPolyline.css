@@ -19,11 +19,15 @@
 	height: 20px;
 	line-height:20px;
 	transform: scale(.8);
+	-webkit-transition:all 1s 1.5s; //透明度变化
+	-webkit-opacity:0;
 
 }
 
 
 .h5_component_polyline_load.text{
+	-webkit-opacity: 1;
 }
 .h5_component_polyline_leave.text{
+	-webkit-opacity: 0;
 }

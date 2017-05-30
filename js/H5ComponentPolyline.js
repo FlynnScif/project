@@ -138,7 +138,7 @@ var H5ComponentPolyline = function ( name,cfg ) {
 			setTimeout(function(){
 				s+=.01;
 				draw(s);
-			},i*10)
+			},i*10+500)
 		}
 	})
 
