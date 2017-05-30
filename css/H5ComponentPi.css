@@ -11,3 +11,10 @@
 	height: 100%;
 }
 
+.h5_component_pi .text {
+	position: absolute;
+	text-align: center;
+	z-index:99;
+	height:24px;
+	position: all 1s;
+}
